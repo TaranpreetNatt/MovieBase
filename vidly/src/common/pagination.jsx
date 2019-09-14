@@ -10,7 +10,7 @@ const Pagination = (props) => {
   const pages = _.range(1, pagesCount + 1 );
 
   return (
-      <nav aria-label="Page navigation example">
+      <nav aria-label="Page navigation">
         <ul className="pagination">
           {pages.map( page => (
             <li
