@@ -21,12 +21,12 @@ class Movies extends Component {
     this.setState({ movies: getMovies(), genres });
   }
 
-  handleDelete = (movie) => {
+  handleDelete = movie => {
     const movies = this.state.movies.filter(m => m._id !== movie._id);
     this.setState({ movies });
   }
 
-  handleLike = (movie) => {
+  handleLike = movie => {
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
     movies[index] = { ...movies[index] };
@@ -42,8 +42,8 @@ class Movies extends Component {
     this.setState({ selectedGenre: genre, currentPage: 1 });
   }
   
-  handleSort = path => {
-    this.setState( { sortColumn: { path, order: 'asc'} });
+  handleSort = sortColumn => {
+    this.setState({ sortColumn });
   }
 
   render() {
@@ -80,6 +80,7 @@ class Movies extends Component {
             <p style={{ margin: 20 }}>Showing {filtered.length} movies in the database.</p>
             <MoviesTable
               movies={movies}
+              sortColumn={sortColumn}
               onLike={this.handleLike}
               onDelete={this.handleDelete}
               onSort={this.handleSort}
